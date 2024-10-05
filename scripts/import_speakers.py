@@ -84,12 +84,13 @@ def main():
                 "conference": row["Original Conference link"],
                 "title": row["Talk title"],
             }
+            data["id"] = "".join(x.lower() for x in data['name'] if x.isalnum())
 
             avurl = row["Profile picture link"]
-            avatar = f"{Path(avurl).stem}.png"
+            avatar = f"{data['id']}.png"
             data["avatar"] = avatar
             resp = requests.get(avurl, stream=True)
-            with open(Path.cwd() / "img" / avatar, "wb") as out:
+            with open(Path.cwd() / "img" / "avatar" / avatar, "wb") as out:
                 shutil.copyfileobj(resp.raw, out)
             del resp
 
