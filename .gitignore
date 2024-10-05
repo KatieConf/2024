@@ -1,0 +1,6 @@
+
+venv/
+
+# scripts
+credentials.json
+token.pickle
