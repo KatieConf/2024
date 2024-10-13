@@ -29,13 +29,10 @@ SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
 
 # The ID and range of a sample spreadsheet.
 SAMPLE_SPREADSHEET_ID = "1_R7iXWXwoVFyiDMlivfa9oq7n2earV8AviQVyrjifbs"
-SAMPLE_RANGE_NAME = "Form Responses 1!A1:L"
+SAMPLE_RANGE_NAME = "Form Responses 1!A1:M"
 
 
 def main():
-    """Shows basic usage of the Sheets API.
-    Prints values from a sample spreadsheet.
-    """
     creds = None
     # The file token.pickle stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
@@ -45,11 +42,11 @@ def main():
             creds = pickle.load(token)
     # If there are no (valid) credentials available, let the user log in.
     if not creds or not creds.valid:
-        if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
-        else:
-            flow = InstalledAppFlow.from_client_secrets_file("credentials.json", SCOPES)
-            creds = flow.run_local_server(port=0)
+        #if creds and creds.expired and creds.refresh_token:
+        #    creds.refresh(Request())
+        #else:
+        flow = InstalledAppFlow.from_client_secrets_file("credentials.json", SCOPES)
+        creds = flow.run_local_server()
         # Save the credentials for the next run
         with open("token.pickle", "wb") as token:
             pickle.dump(creds, token)
@@ -80,8 +77,9 @@ def main():
             data = {
                 "name": row["Name"],
                 "social": row["Social Media link"],
-                "link": row["Video Recording link"],
-                "conference": row["Original Conference link"],
+                "video_link": row["Video Recording link"],
+                "conf": row["Original Conference name"],
+                "conf_link": row["Original Conference link"],
                 "title": row["Talk title"],
             }
             data["id"] = "".join(x.lower() for x in data['name'] if x.isalnum())
