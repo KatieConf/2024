@@ -12,6 +12,7 @@ body {
 .abstract {
   font-size: 20px;
   margin: 50px;
+  text-align: center;
 }
 
 .fancyfont {
@@ -58,4 +59,22 @@ td {
       height: 540px;
       width: 960px;
   }
+}
+
+.talk_title {
+  padding-bottom: 1em;
+}
+
+.as_seen_at {
+  font-style: italic;
+}
+
+a { color: #5E358D}
+
+.speaker_node {
+  min-height: 4em;
+}
+
+.speaker a {
+  color: grey
 }

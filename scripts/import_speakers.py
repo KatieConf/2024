@@ -72,7 +72,7 @@ def main():
             row = dict(zip(header, r))
             if row["Agreement"] != "Agree":
                 continue
-            if row["Action"] == "Spam":
+            if "Action" in row.keys() and row["Action"] == "Spam":
                 continue
             data = {
                 "name": row["Name"],
