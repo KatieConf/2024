@@ -39,14 +39,18 @@ permalink: /
       <a name="speakers"></a>
       <h1>Speakers</h1>
     </div>
+    {% if site.upcoming %}<h5 align="center">more to be announced!</h5>{%endif %}
     <div class="row mb-2">
     {% for k in site.data.speakers %}
       {% include speaker-node.html%}
     {% endfor %}
+
     </div>
 
+    {% if site.upcoming %}<p align="center">We are still accepting speakers! <a href="{{site.cfp}}">Submit your presentation!</a></p>{% endif %}
   </div>
 </div>
+
 {% endif %}
 {% if site.data.organisers > 0 %}
 <div class="section">
