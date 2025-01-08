@@ -1,1 +1,3 @@
-# KatieConf 2024
+# Redirect
+
+2024 now redirects to Eternal
